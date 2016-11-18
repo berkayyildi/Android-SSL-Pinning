@@ -27,7 +27,7 @@ import javax.net.ssl.TrustManager;
 public class MainActivity extends AppCompatActivity {
 
     private static final String SECURE_URL = "https://begen.ca";
-    public static final String PUBLIC_KEY = "30820122300d06092a864886f70d01010105000382010f003082010a0282010100c2efc632118740796f412fcec8c97285a53da4a4ccdbc3c555b7944674f6bed0587e2d5bef9100668e55fc0060b65a7fcc05ffd98bf8d4451f210a0b083756872564b71d96a31652072eac8d2340d00bef4ef18a6f9ca72310bac33c89436a857e6d9b81c01f6ba4b10ed59cde00594025713d170dec1fdf1a8b5a42721f7b5fcd8b499885c0b3b6892fcdca2101575e15975aa5d49fa0029214918634fa1ebcf3c9550f020c18150d0e15ca652c738d915b825cfe4332a4a2c48dca2695686da6f66455eb1f3ac775a40903c37d05af503d9de960cbe6255e45e341128833cd2b4f2b62d211c4acedc09a5c1e3cb4471ab7e7a592b72ab044f6514c7997c17d0203010001";
+    public static final String PUBLIC_KEY = "30820122300d0609...........";
     public static final String TAG = "MainActivity";
     private RequestQueue requestQueue;
 
