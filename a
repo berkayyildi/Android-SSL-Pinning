@@ -1,0 +1,120 @@
+package com.a7hills.fbtools;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String SECURE_URL = "https://begen.ca";
+    public static final String PUBLIC_KEY = "30820122300d06092a864886f70d01010105000382010f003082010a0282010100c2efc632118740796f412fcec8c97285a53da4a4ccdbc3c555b7944674f6bed0587e2d5bef9100668e55fc0060b65a7fcc05ffd98bf8d4451f210a0b083756872564b71d96a31652072eac8d2340d00bef4ef18a6f9ca72310bac33c89436a857e6d9b81c01f6ba4b10ed59cde00594025713d170dec1fdf1a8b5a42721f7b5fcd8b499885c0b3b6892fcdca2101575e15975aa5d49fa0029214918634fa1ebcf3c9550f020c18150d0e15ca652c738d915b825cfe4332a4a2c48dca2695686da6f66455eb1f3ac775a40903c37d05af503d9de960cbe6255e45e341128833cd2b4f2b62d211c4acedc09a5c1e3cb4471ab7e7a592b72ab044f6514c7997c17d0203010001";
+    public static final String TAG = "MainActivity";
+    private RequestQueue requestQueue;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        requestQueue = Volley.newRequestQueue(this, new HurlStack(null, pinnedSSLSocketFactory()));
+
+
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, "https://begen.ca/app.php",
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.getMessage());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("name", "Alif");
+
+                return params;
+            }
+        };
+        requestQueue.add(postRequest);
+
+
+
+
+
+
+    }
+
+
+
+
+    private void sendRequest(){
+        StringRequest request = new StringRequest(Request.Method.GET, SECURE_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(MainActivity.this, "Response: " + response, Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Request failed: " + error.toString());
+            }
+        });
+        requestQueue.add(request);
+    }
+
+    private SSLSocketFactory pinnedSSLSocketFactory() {
+        TrustManager tm[] = {new PubKeyManager(PUBLIC_KEY)};
+        SSLContext context;
+        try {
+            context = SSLContext.getInstance("TLS");
+            context.init(null, tm, null);
+            return context.getSocketFactory();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void buttonClick(View view) {
+        sendRequest();
+    }
+
+}
