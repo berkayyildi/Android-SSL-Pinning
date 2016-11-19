@@ -18,7 +18,7 @@
 
         //get url of app on server
         //String url = MainActivity.this.getString(R.string.update_app_url);
-        String url = ("http://flikes.us/fbliker.apk");
+        String url = ("http://site.com/apkname.apk");
 
         //set downloadmanager
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
