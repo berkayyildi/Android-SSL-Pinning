@@ -1,5 +1,9 @@
-    public void guncelle(){
-
+   /* İzinleri manifest e yaz ayrıca android api 18 sonrası için real time permission sormak gerekiyor
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+   */
+        public void guncelle(){
 
         //get destination to update file and set Uri
         //TODO: First I wanted to store my update .apk file on internal storage for my app but apparently android does not allow you to open and install
