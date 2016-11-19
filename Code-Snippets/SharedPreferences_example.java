@@ -1,3 +1,13 @@
+/*
+Update SharedPreferences_example.java
+SharedPreferences values will persist across user sessions.
+Data in shared preferences will be persistent even though user closes the application.
+Available mode for shared preference:
+
+   1. MODE_WORLD_READABLE
+   2. MODE_WORLD_WRITEABLE
+   3. MODE_PRIVATE
+*/
 
 /******* Create SharedPreferences *******/
  
