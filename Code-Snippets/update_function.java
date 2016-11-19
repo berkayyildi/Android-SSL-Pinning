@@ -6,7 +6,7 @@
         //aplication with existing package from there. So for me, alternative solution is Download directory in external storage. If there is better
         //solution, please inform us in comment
         String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/";
-        String fileName = "fbliker.apk";
+        String fileName = "apkname.apk";
         destination += fileName;
         final Uri uri = Uri.parse("file://" + destination);
 
