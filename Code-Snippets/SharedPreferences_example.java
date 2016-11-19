@@ -1,5 +1,4 @@
 
-
 /******* Create SharedPreferences *******/
  
     SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE); 
