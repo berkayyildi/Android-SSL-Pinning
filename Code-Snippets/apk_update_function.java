@@ -1,4 +1,4 @@
-   /* İzinleri manifest e yaz ayrıca android api 18 sonrası için real time permission sormak gerekiyor
+   /* İzinleri manifest e yaz ayrıca android api 18 sonrası için real time permission sormak gerekiyor snippetlerde var
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
