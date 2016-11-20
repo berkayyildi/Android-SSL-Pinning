@@ -79,24 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+/*
+cannot be cast to java.security.interfaces.RSAPublicKey Hatası alınırsa bununla değiştir
+context = SSLContext.getInstance("RSA/ECB/PKCS1Padding");
 
-
-
-    private void sendRequest(){
-        StringRequest request = new StringRequest(Request.Method.GET, SECURE_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(MainActivity.this, "Response: " + response, Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "Request failed: " + error.toString());
-            }
-        });
-        requestQueue.add(request);
-    }
+*/
 
     private SSLSocketFactory pinnedSSLSocketFactory() {
         TrustManager tm[] = {new PubKeyManager(PUBLIC_KEY)};
